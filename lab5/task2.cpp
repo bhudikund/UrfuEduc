@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Ôóíêöèÿ äëÿ ïîäñ÷¸òà ïóñòûõ è íåïóñòûõ ñèìâîëîâ
+// Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð»Ñ Ð¿Ð¾Ð´ÑÑ‡Ñ‘Ñ‚Ð° Ð¿ÑƒÑÑ‚Ñ‹Ñ… Ð¸ Ð½ÐµÐ¿ÑƒÑÑ‚Ñ‹Ñ… ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²
 void charcounter(int* empt, int* unempt, char* ch)
 {
 	switch (*ch) {
@@ -29,7 +29,6 @@ void charcounter(int* empt, int* unempt, char* ch)
 		*unempt = *unempt + 1;
 		break;
 	}
-
 }
 
 
@@ -37,16 +36,16 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 
-	char ch, name[] = "1.txt";//ââîäèì ïåðåìåííûå
+	char ch, name[] = "1.txt";//Ð²Ð²Ð¾Ð´Ð¸Ð¼ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ
 	int empt = 0, unempt = 0;
 	fstream in;
 	in.open(name);
 	char sym;
 
-	// Ñ÷èòûâàíèå ñèìâîëîâ èç ôàéëà è ïîäñ÷¸ò ïóñòûõ è íåïóñòûõ ñèìâîëîâ
+	// Ð¡Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ð½Ð¸Ðµ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð° Ð¸ Ð¿Ð¾Ð´ÑÑ‡Ñ‘Ñ‚ Ð¿ÑƒÑÑ‚Ñ‹Ñ… Ð¸ Ð½ÐµÐ¿ÑƒÑÑ‚Ñ‹Ñ… ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²
 	while (!in.eof())
 	{
-		in.get(sym); // ñ÷èòàòü èç rf => sym
+		in.get(sym); // ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ Ð¸Ð· rf => sym
 		cout << sym;
 		charcounter(&empt, &unempt, &sym);
 	}
@@ -56,8 +55,8 @@ int main()
 	b = unempt;
 	c = b - a;
 	cout << endl;
-	cout << "Êîëè÷åñòâî ïóñòûõ ñèìâîëîâ - " << a << endl;
-	cout << "Êîëè÷åñòâî íåïóñòûõ ñèìâîëîâ - " << c << endl;
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿ÑƒÑÑ‚Ñ‹Ñ… ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² - " << a << endl;
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½ÐµÐ¿ÑƒÑÑ‚Ñ‹Ñ… ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² - " << c << endl;
 
 	return 0;
 
