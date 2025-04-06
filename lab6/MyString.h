@@ -7,26 +7,26 @@ using namespace std;
 
 class MyString {
 private:
-    char* data; // Переменная для хранения символов строки
+    char* data; // РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃРёРјРІРѕР»РѕРІ СЃС‚СЂРѕРєРё
 
 public:
-    // Конструкторы
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
     MyString();
     MyString(const char* str);
     MyString(const MyString& other);
 
-    // Деструктор
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
     ~MyString();
 
-    // Перегруженные операции
+    // РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё
     MyString& operator=(const MyString& other);
     MyString operator+(const MyString& other) const;
     bool operator==(const MyString& other) const;
 
-    // Метод для определения длины строки
+    // РњРµС‚РѕРґ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
     size_t length() const;
 
-    // Методы ввода и вывода строки
+    // РњРµС‚РѕРґС‹ РІРІРѕРґР° Рё РІС‹РІРѕРґР° СЃС‚СЂРѕРєРё
     friend ostream& operator<<(ostream& os, const MyString& str);
     friend istream& operator>>(istream& is, MyString& str);
 };
