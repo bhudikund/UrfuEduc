@@ -10,18 +10,18 @@ public:
     int X, Y;         
     sf::Color Cvet;  
 
-    // Метод инициализации точки
+    // РњРµС‚РѕРґ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё С‚РѕС‡РєРё
     void Init(int XN, int YN, sf::Color Color) {
         X = XN;
         Y = YN;
         Cvet = Color;
     }
 
-    // Виртуальные методы для отображения и скрытия точки
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ Рё СЃРєСЂС‹С‚РёСЏ С‚РѕС‡РєРё
     virtual void Show(sf::RenderWindow& window) {}
     virtual void Hide(sf::RenderWindow& window) {}
 
-    // Метод для получения текущих координат точки
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С‚РµРєСѓС‰РёС… РєРѕРѕСЂРґРёРЅР°С‚ С‚РѕС‡РєРё
     void Locat(int& XL, int& YL) {
         XL = X;
         YL = Y;
@@ -31,45 +31,45 @@ public:
     void Fly(int Cost, sf::RenderWindow& window) {
         Show(window);  
 
-        // Инициализация генератора случайных чисел
+        // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіРµРЅРµСЂР°С‚РѕСЂР° СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
         srand(static_cast<unsigned>(time(nullptr)));
 
        
         do {
             int XX, YY;
-            Locat(XX, YY);  // Получить текущие координаты
+            Locat(XX, YY);  // РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰РёРµ РєРѕРѕСЂРґРёРЅР°С‚С‹
 
-            // Генерация новой координаты X с учетом границ окна
+            // Р“РµРЅРµСЂР°С†РёСЏ РЅРѕРІРѕР№ РєРѕРѕСЂРґРёРЅР°С‚С‹ X СЃ СѓС‡РµС‚РѕРј РіСЂР°РЅРёС† РѕРєРЅР°
             do {
-                // Случайное смещение
+                // РЎР»СѓС‡Р°Р№РЅРѕРµ СЃРјРµС‰РµРЅРёРµ
                 XX = XX + static_cast<int>(round((rand() / static_cast<double>(RAND_MAX) - 0.5) * Cost));
-            } while (XX <= 0 || XX >= window.getSize().x);  // Проверка границ
+            } while (XX <= 0 || XX >= window.getSize().x);  // РџСЂРѕРІРµСЂРєР° РіСЂР°РЅРёС†
 
-            // Генерация новой координаты Y с учетом границ окна
+            // Р“РµРЅРµСЂР°С†РёСЏ РЅРѕРІРѕР№ РєРѕРѕСЂРґРёРЅР°С‚С‹ Y СЃ СѓС‡РµС‚РѕРј РіСЂР°РЅРёС† РѕРєРЅР°
             do {
                 YY = YY + static_cast<int>(round((rand() / static_cast<double>(RAND_MAX) - 0.5) * Cost));
-            } while (YY <= 0 || YY >= window.getSize().y);  // Проверка границ
+            } while (YY <= 0 || YY >= window.getSize().y);  // РџСЂРѕРІРµСЂРєР° РіСЂР°РЅРёС†
 
-            // Перемещение точки
+            // РџРµСЂРµРјРµС‰РµРЅРёРµ С‚РѕС‡РєРё
             Hide(window);   
             X = XX;        
             Y = YY;
             Show(window);  
 
-            window.display();                  // Обновить отображение окна
+            window.display();                  // РћР±РЅРѕРІРёС‚СЊ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РѕРєРЅР°
             sf::sleep(sf::milliseconds(300)); 
 
-        } while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));  // Условие выхода
+        } while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));  // РЈСЃР»РѕРІРёРµ РІС‹С…РѕРґР°
     }
 };
 
 
 class Krug : public Point {
 public:
-    unsigned short Radius;  // Радиус круга
-    sf::CircleShape shape;  // SFML-объект круга
+    unsigned short Radius;  // Р Р°РґРёСѓСЃ РєСЂСѓРіР°
+    sf::CircleShape shape;  // SFML-РѕР±СЉРµРєС‚ РєСЂСѓРіР°
 
-    // Конструктор круга
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєСЂСѓРіР°
     Krug(int XN, int YN, unsigned short R, sf::Color Color) : shape(R) {
         Init(XN, YN, Color);  
         Radius = R;
@@ -77,12 +77,12 @@ public:
         shape.setPosition(static_cast<float>(X), static_cast<float>(Y)); 
     }
 
-    // Метод отображения круга
+    // РњРµС‚РѕРґ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєСЂСѓРіР°
     void Show(sf::RenderWindow& window) override {
         window.draw(shape);
     }
 
-    // Метод скрытия круга (рисует черным цветом)
+    // РњРµС‚РѕРґ СЃРєСЂС‹С‚РёСЏ РєСЂСѓРіР° (СЂРёСЃСѓРµС‚ С‡РµСЂРЅС‹Рј С†РІРµС‚РѕРј)
     void Hide(sf::RenderWindow& window) override {
         shape.setFillColor(sf::Color::Black);  
         window.draw(shape);
@@ -92,10 +92,10 @@ public:
 
 
 int main() {
-    // Создание окна размером 800x600 с заголовком
+    // РЎРѕР·РґР°РЅРёРµ РѕРєРЅР° СЂР°Р·РјРµСЂРѕРј 800x600 СЃ Р·Р°РіРѕР»РѕРІРєРѕРј
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
 
-    // Создание красного круга с центром в (150,40) и радиусом 50
+    // РЎРѕР·РґР°РЅРёРµ РєСЂР°СЃРЅРѕРіРѕ РєСЂСѓРіР° СЃ С†РµРЅС‚СЂРѕРј РІ (150,40) Рё СЂР°РґРёСѓСЃРѕРј 50
     Krug TestKrug(150, 40, 50, sf::Color::Red);
 
  
