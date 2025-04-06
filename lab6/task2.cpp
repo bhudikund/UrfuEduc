@@ -3,10 +3,10 @@
 
 using namespace std;
 
-// Конструктор по умолчанию
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 MyString::MyString() : data(nullptr) {}
 
-// Конструктор с параметром
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
 MyString::MyString(const char* str) {
     if (str != nullptr) {
         data = new char[strlen(str) + 1];
@@ -17,7 +17,7 @@ MyString::MyString(const char* str) {
     }
 }
 
-// Конструктор копирования
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 MyString::MyString(const MyString& other) {
     if (other.data != nullptr) {
         data = new char[strlen(other.data) + 1];
@@ -33,7 +33,7 @@ MyString::~MyString() {
     delete[] data;
 }
 
-// Операция присваивания
+// РћРїРµСЂР°С†РёСЏ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 MyString& MyString::operator=(const MyString& other) {
     if (this != &other) {
         delete[] data;
@@ -48,7 +48,7 @@ MyString& MyString::operator=(const MyString& other) {
     return *this;
 }
 
-// Операция сцепления
+// РћРїРµСЂР°С†РёСЏ СЃС†РµРїР»РµРЅРёСЏ
 MyString MyString::operator+(const MyString& other) const {
     MyString result;
     if (data != nullptr && other.data != nullptr) {
@@ -65,17 +65,17 @@ MyString MyString::operator+(const MyString& other) const {
     return result;
 }
 
-// Операция сравнения
+// РћРїРµСЂР°С†РёСЏ СЃСЂР°РІРЅРµРЅРёСЏ
 bool MyString::operator==(const MyString& other) const {
     return strcmp(data, other.data) == 0;
 }
 
-// Метод для определения длины строки
+// РњРµС‚РѕРґ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
 size_t MyString::length() const {
     return (data != nullptr) ? strlen(data) : 0;
 }
 
-// Операция вывода
+// РћРїРµСЂР°С†РёСЏ РІС‹РІРѕРґР°
 ostream& operator<<(ostream& os, const MyString& str) {
     if (str.data != nullptr) {
         os << str.data;
@@ -83,7 +83,7 @@ ostream& operator<<(ostream& os, const MyString& str) {
     return os;
 }
 
-// Операция ввода
+// РћРїРµСЂР°С†РёСЏ РІРІРѕРґР°
 istream& operator>>(istream& is, MyString& str) {
     char buffer[1024];
     is >> buffer;
