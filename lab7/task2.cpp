@@ -6,12 +6,12 @@
 
 class Point {
 public:
-    int X, Y; // Координаты точки
+    int X, Y; // РљРѕРѕСЂРґРёРЅР°С‚С‹ С‚РѕС‡РєРё
 
-    // Конструктор 
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ 
     Point(int x = 0, int y = 0) : X(x), Y(y) {}
 
-    // Метод для получения текущих координат точки
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С‚РµРєСѓС‰РёС… РєРѕРѕСЂРґРёРЅР°С‚ С‚РѕС‡РєРё
     void Locat(int& x, int& y) {
         x = X;
         y = Y;
@@ -21,39 +21,39 @@ public:
 
 class Krug : public Point {
 private:
-    int Radius;           // Радиус круга
-    sf::Color Cvet;       // Цвет круга
-    sf::CircleShape shape; // SFML-объект для отрисовки круга
+    int Radius;           // Р Р°РґРёСѓСЃ РєСЂСѓРіР°
+    sf::Color Cvet;       // Р¦РІРµС‚ РєСЂСѓРіР°
+    sf::CircleShape shape; // SFML-РѕР±СЉРµРєС‚ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё РєСЂСѓРіР°
 
 public:
-    // Конструктор 
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ 
     Krug(int x, int y, int radius, sf::Color cvet) : Point(x, y), Radius(radius), Cvet(cvet) {
         shape.setRadius(static_cast<float>(Radius));
         shape.setFillColor(Cvet);
-        shape.setOrigin(static_cast<float>(Radius), static_cast<float>(Radius)); // Установка центра круга
-        shape.setPosition(static_cast<float>(X), static_cast<float>(Y)); // Установка позиции круга
+        shape.setOrigin(static_cast<float>(Radius), static_cast<float>(Radius)); // РЈСЃС‚Р°РЅРѕРІРєР° С†РµРЅС‚СЂР° РєСЂСѓРіР°
+        shape.setPosition(static_cast<float>(X), static_cast<float>(Y)); // РЈСЃС‚Р°РЅРѕРІРєР° РїРѕР·РёС†РёРё РєСЂСѓРіР°
     }
 
-    // Отображение круга
+    // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РєСЂСѓРіР°
     void Show(sf::RenderWindow& window) {
         window.draw(shape);
     }
 
-    // Скрытие круга (установка прозрачного цвета)
+    // РЎРєСЂС‹С‚РёРµ РєСЂСѓРіР° (СѓСЃС‚Р°РЅРѕРІРєР° РїСЂРѕР·СЂР°С‡РЅРѕРіРѕ С†РІРµС‚Р°)
     void Hide(sf::RenderWindow& window) {
         shape.setFillColor(sf::Color::Transparent);
         window.draw(shape);
-        shape.setFillColor(Cvet); // Возврат исходного цвета
+        shape.setFillColor(Cvet); // Р’РѕР·РІСЂР°С‚ РёСЃС…РѕРґРЅРѕРіРѕ С†РІРµС‚Р°
     }
 
-    // Изменение размера круга
+    // РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂР° РєСЂСѓРіР°
     void ChangeSize(int delta) {
         Radius += delta;
         shape.setRadius(static_cast<float>(Radius));
         shape.setOrigin(static_cast<float>(Radius), static_cast<float>(Radius));
     }
 
-    // Изменение цвета круга
+    // РР·РјРµРЅРµРЅРёРµ С†РІРµС‚Р° РєСЂСѓРіР°
     void ChangeColor(sf::Color newColor) {
         Cvet = newColor;
         shape.setFillColor(Cvet);
@@ -62,11 +62,11 @@ public:
     
     void Fly(int Cost, sf::RenderWindow& window) {
         Show(window);
-        srand(static_cast<unsigned>(time(nullptr))); // Генератор случайных чисел
+        srand(static_cast<unsigned>(time(nullptr))); // Р“РµРЅРµСЂР°С‚РѕСЂ СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
         do {
             int XX, YY;
             Locat(XX, YY);
-            // Генерация новых координат
+            // Р“РµРЅРµСЂР°С†РёСЏ РЅРѕРІС‹С… РєРѕРѕСЂРґРёРЅР°С‚
             do {
                 XX = XX + static_cast<int>(round((rand() / static_cast<double>(RAND_MAX) - 0.5) * Cost);
             } while (XX <= 0 || XX >= window.getSize().x);
@@ -77,8 +77,8 @@ public:
             Hide(window);
             X = XX;
             Y = YY;
-            ChangeSize(rand() % 20 - 10); // Изменение размера на случайное значение
-            ChangeColor(sf::Color(rand() % 255, rand() % 255, rand() % 255)); // Случайный цвет
+            ChangeSize(rand() % 20 - 10); // РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂР° РЅР° СЃР»СѓС‡Р°Р№РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+            ChangeColor(sf::Color(rand() % 255, rand() % 255, rand() % 255)); // РЎР»СѓС‡Р°Р№РЅС‹Р№ С†РІРµС‚
             Show(window);
             window.display();
             sf::sleep(sf::milliseconds(300)); 
@@ -88,10 +88,10 @@ public:
 
 
 int main() {
-    // Создание окна SFML
+    // РЎРѕР·РґР°РЅРёРµ РѕРєРЅР° SFML
     sf::RenderWindow window(sf::VideoMode(800, 600), "Krug Program");
 
-    // Создание круга
+    // РЎРѕР·РґР°РЅРёРµ РєСЂСѓРіР°
     Krug krug(200, 300, 50, sf::Color::Red);
 
     
