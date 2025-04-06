@@ -9,20 +9,17 @@
 using namespace std;
 
 int main()
-{	//вводим вектор который состоит из векторов типа char
+{	
 	vector<vector<char>> arr;
-	//вводим вектор типа char
 	vector<char> charr;
-	//еще один вектор где будет храниться строка для поиска
 	vector<char> findSt;
-	//задаем эту строку и помещаем ее в вектор
+	
 	string s = "наступил";
 	int poiskP(vector<char>, vector<char>);
 	copy(s.begin(), s.end(), back_inserter(findSt));
 	setlocale(LC_ALL, "ru");
 	void appendC(char*, char);
 
-	// для удобства вместо запроса сразу вводим имя файла
 	char ch, name[50] = "1.txt";
 	int empt = 0, unempt = 0, i = 0;
 	FILE* in;
@@ -43,7 +40,7 @@ int main()
 		}
 		else
 		{
-			//вектор записывается в двумерный,вектор-массив после чего очищается
+			
 			arr.push_back(charr);
 			charr.clear();
 		}
