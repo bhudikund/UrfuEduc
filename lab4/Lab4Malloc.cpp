@@ -36,31 +36,31 @@ int main() {
 
 }
 
-// Первая фукция длинны
+// РџРµСЂРІР°СЏ С„СѓРєС†РёСЏ РґР»РёРЅРЅС‹
 int dlina1(const char* str) {
 
     int length = 0;
     for (; str[length] != '\0'; length++);
     return length;
 }
-// Вторая фукция длинны
+// Р’С‚РѕСЂР°СЏ С„СѓРєС†РёСЏ РґР»РёРЅРЅС‹
 int dlina2(const char* str) {
     const char* s = str;
     while (*s) ++s;
     return s - str;
 }
-// Третья фукция длинны
+// РўСЂРµС‚СЊСЏ С„СѓРєС†РёСЏ РґР»РёРЅРЅС‹
 int dlina3(const char* str) {
 
     int length = 0;
     while (*str++) length++;
     return length;
 }
-//Функция копирования
+//Р¤СѓРЅРєС†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 void kopir(char* dest, const char* src) {
     while ((*dest++ = *src++));
 }
-//Функция сравнения
+//Р¤СѓРЅРєС†РёСЏ СЃСЂР°РІРЅРµРЅРёСЏ
 int sravn(const char* str1, const char* str2) {
     while (*str1 && (*str1 == *str2)) {
         str1++;
@@ -68,7 +68,7 @@ int sravn(const char* str1, const char* str2) {
     }
     return *(unsigned char*)str1 - *(unsigned char*)str2;
 }
-//Функция конкатенации
+//Р¤СѓРЅРєС†РёСЏ РєРѕРЅРєР°С‚РµРЅР°С†РёРё
 char konkat(char* dest, const char* src) {
     while (*dest) dest++;
     while ((*dest++ = *src++));
