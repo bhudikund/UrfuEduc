@@ -4,47 +4,47 @@
 
 using namespace std;
 
-// Функция для шифрования файла
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°
 void encryptFile(const string& inputFileName, const string& outputFileName, const string& key) {
     ifstream inputFile(inputFileName, ios::binary);
     ofstream outputFile(outputFileName, ios::binary);
 
-    // Получаем длину ключа
+    // РџРѕР»СѓС‡Р°РµРј РґР»РёРЅСѓ РєР»СЋС‡Р°
     size_t keyLength = key.length();
-    // Индекс текущего символа ключа
+    // РРЅРґРµРєСЃ С‚РµРєСѓС‰РµРіРѕ СЃРёРјРІРѕР»Р° РєР»СЋС‡Р°
     size_t keyIndex = 0;
 
     char c;
-    // Считываем символы из входного файла
+    // РЎС‡РёС‚С‹РІР°РµРј СЃРёРјРІРѕР»С‹ РёР· РІС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
     while (inputFile.get(c)) {
         c ^= key[keyIndex];
         outputFile.put(c);
         keyIndex = (keyIndex + 1) % keyLength;
     }
 
-    // Закрываем файлы
+    // Р—Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»С‹
     inputFile.close();
     outputFile.close();
 }
 
 int main(int argc, char* argv[]) {
-    // Проверяем, что передано три аргумента командной строки
+    // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїРµСЂРµРґР°РЅРѕ С‚СЂРё Р°СЂРіСѓРјРµРЅС‚Р° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     if (argc != 3) {
         cerr << "Usage: " << argv[0] << " <output_file> <key>" << endl;
         return 1;
     }
 
-    // Имя выходного файла и ключ из аргументов командной строки
+    // РРјСЏ РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° Рё РєР»СЋС‡ РёР· Р°СЂРіСѓРјРµРЅС‚РѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     const string outputFileName = argv[1];
     const string key = argv[2];
 
     encryptFile("1.txt", outputFileName, key);
 
-    // Повторно шифруем зашифрованный файл для проверки
+    // РџРѕРІС‚РѕСЂРЅРѕ С€РёС„СЂСѓРµРј Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ С„Р°Р№Р» РґР»СЏ РїСЂРѕРІРµСЂРєРё
     const string doubleEncryptedFileName = outputFileName;
     encryptFile(outputFileName, doubleEncryptedFileName, key);
 
-    cout << "Двойное шифрование:" << doubleEncryptedFileName << endl;
+    cout << "Р”РІРѕР№РЅРѕРµ С€РёС„СЂРѕРІР°РЅРёРµ:" << doubleEncryptedFileName << endl;
 
     return 0;
 }
