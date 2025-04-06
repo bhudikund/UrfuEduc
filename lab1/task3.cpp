@@ -15,19 +15,19 @@ void main(void) {
 	obmen3(a, b);
 	cout << "ďîńëĺ îáěĺíŕ3: a= " << a << " b= " << b << endl;
 }
-// Îáěĺí ďî çíŕ÷ĺíčţ
+// Обмен по значению
 void obmen(int a, int b) {
 	int temp = a;
 	a = b;
 	b = temp;
 }
-// Îáěĺí ďî óęŕçŕňĺë˙ě
+// Обмен по указателям
 void obmen2(int* a, int* b) {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 }
-// Îáěĺí ďî ńńűëęŕě
+// Обмен по ссылкам
 void obmen3(int &a, int &b) {
 	int temp = a;
 	a = b;
