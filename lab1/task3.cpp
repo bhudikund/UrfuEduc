@@ -7,27 +7,27 @@ void main(void) {
 	void obmen(int, int);
 	void obmen2(int*, int*);
 	void obmen3(int&, int&);
-	cout << "äî îáìåíà: a= " << a << " b= " << b << endl;
+	cout << "Ã¤Ã® Ã®Ã¡Ä›ÄºÃ­Å•: a= " << a << " b= " << b << endl;
 	obmen(a, b);
-	cout << "ïîñëå îáìåíà: a= " << a << " b= " << b << endl;
+	cout << "ÄÃ®Å„Ã«Äº Ã®Ã¡Ä›ÄºÃ­Å•: a= " << a << " b= " << b << endl;
 	obmen2(&a, &b);
-	cout << "ïîñëå îáìåíà2: a= " << a << " b= " << b << endl;
+	cout << "ÄÃ®Å„Ã«Äº Ã®Ã¡Ä›ÄºÃ­Å•2: a= " << a << " b= " << b << endl;
 	obmen3(a, b);
-	cout << "ïîñëå îáìåíà3: a= " << a << " b= " << b << endl;
+	cout << "ÄÃ®Å„Ã«Äº Ã®Ã¡Ä›ÄºÃ­Å•3: a= " << a << " b= " << b << endl;
 }
-// Îáìåí ïî çíà÷åíèþ
+// ÃŽÃ¡Ä›ÄºÃ­ ÄÃ® Ã§Ã­Å•Ã·ÄºÃ­ÄÅ£
 void obmen(int a, int b) {
 	int temp = a;
 	a = b;
 	b = temp;
 }
-// Îáìåí ïî óêàçàòåëÿì
+// ÃŽÃ¡Ä›ÄºÃ­ ÄÃ® Ã³Ä™Å•Ã§Å•ÅˆÄºÃ«Ë™Ä›
 void obmen2(int* a, int* b) {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
 }
-// Îáìåí ïî ññûëêàì
+// ÃŽÃ¡Ä›ÄºÃ­ ÄÃ® Å„Å„Å±Ã«Ä™Å•Ä›
 void obmen3(int &a, int &b) {
 	int temp = a;
 	a = b;
