@@ -4,51 +4,49 @@
 
 using namespace std;
 
-// Функция для шифрования файла
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°
 void encryptFile(const string& inputFileName, const string& outputFileName, const string& key) {
     ifstream inputFile(inputFileName, ios::binary);
     ofstream outputFile(outputFileName, ios::binary);
-
-    // Получаем длину ключа
+    
     size_t keyLength = key.length();
-    // Индекс текущего символа ключа
     size_t keyIndex = 0;
 
     char c;
-    // Считываем символы из входного файла
+    // РЎС‡РёС‚С‹РІР°РµРј СЃРёРјРІРѕР»С‹ РёР· РІС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
     while (inputFile.get(c)) {
         c ^= key[keyIndex];
         outputFile.put(c);
         keyIndex = (keyIndex + 1) % keyLength;
     }
 
-    // Закрываем файлы
+    // Р—Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»С‹
     inputFile.close();
     outputFile.close();
 }
 
 int main(int argc, char* argv[]) {
-    // Проверяем, что передано четыре аргумента командной строки
+    // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїРµСЂРµРґР°РЅРѕ С‡РµС‚С‹СЂРµ Р°СЂРіСѓРјРµРЅС‚Р° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     if (argc != 3) {
-        cerr << "Используется: " << argv[1] << endl;
+        cerr << "РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ: " << argv[1] << endl;
         return 1;
     }
 
-    // Получаем имя входного файла и ключ из аргументов командной строки
+    // РџРѕР»СѓС‡Р°РµРј РёРјСЏ РІС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° Рё РєР»СЋС‡ РёР· Р°СЂРіСѓРјРµРЅС‚РѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     const string inputFileName = argv[0];
     const string key = argv[2];
 
-    // Задаем имя выходного файла
+    // Р—Р°РґР°РµРј РёРјСЏ РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
     const string outputFileName = "2.txt";
 
-    // Шифруем входной файл
+    // РЁРёС„СЂСѓРµРј РІС…РѕРґРЅРѕР№ С„Р°Р№Р»
     encryptFile(inputFileName, outputFileName, key);
 
-    // Шифруем зашифрованный файл еще раз для проверки
-    const string doubleEncryptedFileName = "Двойное шифрование" + outputFileName;
+    // РЁРёС„СЂСѓРµРј Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ С„Р°Р№Р» РµС‰Рµ СЂР°Р· РґР»СЏ РїСЂРѕРІРµСЂРєРё
+    const string doubleEncryptedFileName = "Р”РІРѕР№РЅРѕРµ С€РёС„СЂРѕРІР°РЅРёРµ" + outputFileName;
     encryptFile(outputFileName, doubleEncryptedFileName, key);
 
-    cout << "Двойное шифрование " << doubleEncryptedFileName << endl;
+    cout << "Р”РІРѕР№РЅРѕРµ С€РёС„СЂРѕРІР°РЅРёРµ " << doubleEncryptedFileName << endl;
 
     return 0;
 }
