@@ -8,7 +8,7 @@ private:
     char* data; 
 
 public:
-    // Конструкторы
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
     MyString() : data(nullptr) {} 
     MyString(const char* str) {
         if (str != nullptr) {
@@ -19,7 +19,7 @@ public:
             data = nullptr;
         }
     }
-    MyString(const MyString& other) { // Конструктор копирования
+    MyString(const MyString& other) { // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
         if (other.data != nullptr) {
             data = new char[strlen(other.data) + 1]; 
             strcpy(data, other.data);
@@ -34,7 +34,7 @@ public:
         delete[] data;
     }
 
-    // Перегруженные операции
+    // РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё
     MyString& operator=(const MyString& other) { 
         if (this != &other) {
             delete[] data;
@@ -48,7 +48,7 @@ public:
         }
         return *this;
     }
-    MyString operator+(const MyString& other) const { // Операция сцепления строк
+    MyString operator+(const MyString& other) const { // РћРїРµСЂР°С†РёСЏ СЃС†РµРїР»РµРЅРёСЏ СЃС‚СЂРѕРє
         MyString result;
         if (data != nullptr && other.data != nullptr) {
             result.data = new char[strlen(data) + strlen(other.data) + 1];
@@ -67,19 +67,19 @@ public:
         return strcmp(data, other.data) == 0;
     }
 
-    // Метод для определения длины строки
+    // РњРµС‚РѕРґ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
     size_t length() const {
         return (data != nullptr) ? strlen(data) : 0;
     }
 
-    // Методы ввода и вывода строки
-    friend ostream& operator<<(ostream& os, const MyString& str) { // Операция вывода
+    // РњРµС‚РѕРґС‹ РІРІРѕРґР° Рё РІС‹РІРѕРґР° СЃС‚СЂРѕРєРё
+    friend ostream& operator<<(ostream& os, const MyString& str) { // РћРїРµСЂР°С†РёСЏ РІС‹РІРѕРґР°
         if (str.data != nullptr) {
             os << str.data;
         }
         return os;
     }
-    friend istream& operator>>(istream& is, MyString& str) { // Операция ввода
+    friend istream& operator>>(istream& is, MyString& str) { // РћРїРµСЂР°С†РёСЏ РІРІРѕРґР°
         char buffer[1024];
         is >> buffer;
         str = MyString(buffer);
@@ -93,21 +93,21 @@ int main() {
     MyString str2("ASDASDDAS");
 
     MyString str3 = str1 + str2;
-    cout << "Объединенная строка: " << str3 << endl;
+    cout << "РћР±СЉРµРґРёРЅРµРЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << str3 << endl;
 
     if (str1 == str2) {
-        cout << "Строки равны: " << endl;
+        cout << "РЎС‚СЂРѕРєРё СЂР°РІРЅС‹: " << endl;
     }
     else {
-        cout << "Строки не равны:" << endl;
+        cout << "РЎС‚СЂРѕРєРё РЅРµ СЂР°РІРЅС‹:" << endl;
     }
 
-    cout << "Длина строки:" << str1.length() << endl;
+    cout << "Р”Р»РёРЅР° СЃС‚СЂРѕРєРё:" << str1.length() << endl;
 
     MyString str4;
-    cout << "Введите: ";
+    cout << "Р’РІРµРґРёС‚Рµ: ";
     cin >> str4;
-    cout << "Введенная строка:" << str4 << endl;
+    cout << "Р’РІРµРґРµРЅРЅР°СЏ СЃС‚СЂРѕРєР°:" << str4 << endl;
 
     return 0;
 }
